@@ -18,338 +18,445 @@
     ></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      rel="stylesh
-      eet"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="/toy-catalog/public/scss/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.11/vue.js"></script>
+    <link rel="stylesheet" href="/toy-catalog/public/scss/styles.css" />
+    <link rel="stylesheet" href="/toy-catalog/public/scss/register.css" />
   </head>
-  <body>
+  <body class="container-fluid">
+    <header class="row">
+      <!-- <div class="container"> -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Nerya LLC</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#main_nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="main_nav">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                  Categories
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="product.html">
+                      All Products
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"> Board Games </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"> STEAM Toys </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"> Electronics </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html"
+                  ><i class="fa-solid fa-envelope"></i> Contact
+                </a>
+              </li>
+              <li class="nav-item">
+                <div class="input-group rounded">
+                  <input
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                  />
+                  <span class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </div>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="liked.html">
+                  <i class="fa-solid fa-heart"></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <!-- dropdown-toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown">
+                  <i class="fa-solid fa-user"></i> Register
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="signin.html">
+                      <i class="fa-solid fa-user"></i> Log In / Register
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item">
+                      <i class="fa-solid fa-heart"></i> Favorites
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="fa-solid fa-cart-shopping"></i> Send Order
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- navbar-collapse.// -->
+        </div>
+        <!-- container-fluid.// -->
+      </nav>
+      <!-- </div> -->
+    </header>
     <main>
-      <h2>Create Account</h2>
-      <div class="container" id="form">
-        <section id="form1" v-if="!section1">
-          <form class="needs-validation" novalidate>
-            <small class="form-text text-muted"> STEP 1 of 3 </small>
-            <h3>Account Details</h3>
+      <div class="container" id="registerPage">
+        <h2>Create Account</h2>
+        <div class="container" id="form">
+          <section id="form1" v-if="!section1">
+            <form class="needs-validation" novalidate>
+              <span class="form-text text-muted"> STEP 1 of 3 </span>
+              <h3>Account Details</h3>
 
-            <div class="row">
-              <div class="form-group col">
-                <label for="firstname">First Name</label>
+              <div class="row">
+                <div class="form-group col">
+                  <label for="firstname">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstname"
+                    placeholder="John"
+                    required
+                  />
+                </div>
+
+                <div class="form-group col">
+                  <label for="lastname">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastname"
+                    placeholder="Doe"
+                    required
+                  />
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col">
+                  <label for="contactEmail">Contact Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="contactEmail"
+                    aria-describedby="emailHelp"
+                    placeholder="your-email@hurizun.com"
+                    required
+                  />
+
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+
+                <div class="form-group col">
+                  <label for="contactPhone">Contact Phone</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="contactPhone"
+                    aria-describedby="telHelp"
+                    placeholder="(123) 456 7890"
+                    required
+                  />
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+                <span id="emailHelp" class="form-text text-muted">
+                  Used for account login and purchase order notification
+                </span>
+              </div>
+              <div class="form-check">
                 <input
-                  type="text"
-                  class="form-control"
-                  id="firstname"
-                  placeholder="John"
+                  type="checkbox"
+                  class="form-check-input"
+                  id="formCheckWholesale"
                   required
                 />
+                <label class="form-check-label" for="formCheckWholesale">
+                  I am signing up as a wholesale partner
+                </label>
               </div>
 
-              <div class="form-group col">
-                <label for="lastname">Last Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lastname"
-                  placeholder="Doe"
-                  required
-                />
-                <!-- <div class="valid-feedback">Looks good!</div> -->
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col">
-                <label for="contactEmail">Contact Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="contactEmail"
-                  aria-describedby="emailHelp"
-                  placeholder="your-email@hurizun.com"
-                  required
-                />
+              <button class="btn btn-warning" type="reset">Cancel</button>
+              <button
+                class="btn btn-warning"
+                v-on:click="section1 = !section1; section2 = !section2 "
+              >
+                Next
+              </button>
+            </form>
+          </section>
 
-                <!-- <div class="valid-feedback">Looks good!</div> -->
+          <section v-if="section2">
+            <form class="needs-validation" novalidate>
+              <span class="form-text text-muted"> STEP 2 of 3 </span>
+              <h3>Wholesale Details</h3>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="typeOfBusiness"> Type of Business </label>
+                  <select id="typeOfBusiness" class="form-control" required>
+                    <option selected>Choose...</option>
+                    <option value="1">Brick and Mortar / Retail</option>
+                    <option value="2">Online Ecommerce</option>
+                    <option value="3">Both: Online and Retail Store</option>
+                    <option value="4">Distributor</option>
+                  </select>
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="businessWebsite">Business Website</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="businessWebsite"
+                    placeholder="hurizun.com"
+                    required
+                  />
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
               </div>
-
-              <div class="form-group col">
-                <label for="contactPhone">Contact Phone</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="contactPhone"
-                  aria-describedby="telHelp"
-                  placeholder="(123) 456 7890"
-                  required
-                />
-                <!-- <div class="valid-feedback">Looks good!</div> -->
-              </div>
-              <small id="emailHelp" class="form-text text-muted">
-                Used for account login and purchase order notification
-              </small>
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="formCheckWholesale"
-                required
-              />
-              <label class="form-check-label" for="formCheckWholesale">
-                I am signing up as a wholesale partner
-              </label>
-            </div>
-
-            <button class="btn btn-warning" type="reset">Cancel</button>
-            <button
-              class="btn btn-warning"
-              v-on:click="section1 = !section1; section2 = !section2 "
-            >
-              Next
-            </button>
-          </form>
-        </section>
-
-        <section v-if="section2">
-          <form class="needs-validation" novalidate>
-            <small class="form-text text-muted"> STEP 2 of 3 </small>
-            <h3>Wholesale Details</h3>
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="typeOfBusiness"> Type of Business </label>
-                <select id="typeOfBusiness" class="form-control" required>
-                  <option selected>Choose...</option>
-                  <option value="1">Brick and Mortar / Retail</option>
-                  <option value="2">Online Ecommerce</option>
-                  <option value="3">Both: Online and Retail Store</option>
-                  <option value="4">Distributor</option>
-                </select>
-                <!-- <div class="valid-feedback">Looks good!</div> -->
-              </div>
-              <div class="form-group col-md-6">
-                <label for="businessWebsite">Business Website</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessWebsite"
-                  placeholder="hurizun.com"
-                  required
-                />
-                <!-- <div class="valid-feedback">Looks good!</div> -->
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="legalBusinessName">Legal Business Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="legalBusinessName"
-                  placeholder="Nerya LLC"
-                  required
-                />
-                <!-- <div class="valid-feedback">Looks good!</div> -->
-              </div>
-              <div class="form-group col-md-6">
-                <label class="col" for="dbaName">Doing Business As </label>
-                <!-- <div class="form-check col">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="legalBusinessName">Legal Business Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="legalBusinessName"
+                    placeholder="Nerya LLC"
+                    required
+                  />
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="col" for="dbaName">Doing Business As </label>
+                  <!-- <div class="form-check col">
                 <input
                   class="form-check-input"
                   type="checkbox"
                   id="gridCheck"
                 />
-                <small>
+                <span>
                   <label class="form-check-label" for="gridCheck">
                     Same as Legal business name
                   </label>
-                </small>
+                </span>
               </div> -->
-                <input
-                  type="text"
-                  class="form-control"
-                  id="dbaName"
-                  placeholder="Hurizun"
-                />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="dbaName"
+                    placeholder="Hurizun"
+                  />
+                </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="form-group col-6">
-                <label for="inputAddress">Billing Address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputAddress"
-                  placeholder="1234 Main St"
-                  required
-                />
-                <!-- <div class="valid-feedback">Looks good!</div> -->
+              <div class="row">
+                <div class="form-group col-6">
+                  <label for="inputAddress">Billing Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder="1234 Main St"
+                    required
+                  />
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+                <div class="form-group col-6">
+                  <label for="inputAddress2">Address 2</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder="Apartment, studio, or floor"
+                  />
+                </div>
               </div>
-              <div class="form-group col-6">
-                <label for="inputAddress2">Address 2</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputAddress2"
-                  placeholder="Apartment, studio, or floor"
-                />
-              </div>
-            </div>
 
-            <div class="row">
-              <div class="form-group col-5">
-                <label for="inputCity">City</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputCity"
-                  required
-                />
-                <!-- <div class="valid-feedback">Looks good!</div> -->
+              <div class="row">
+                <div class="form-group col-5">
+                  <label for="inputCity">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    required
+                  />
+                  <!-- <div class="valid-feedback">Looks good!</div> -->
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <select id="inputState" class="form-control" required>
+                    <option selected>Choose...</option>
+                    <option>CA</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputZip">Zip</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    required
+                  />
+                </div>
               </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control" required>
-                  <option selected>Choose...</option>
-                  <option>CA</option>
-                </select>
-              </div>
-              <div class="form-group col-md-3">
-                <label for="inputZip">Zip</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputZip"
-                  required
-                />
-              </div>
-            </div>
 
-            <div class="row">
-              <div class="form-group col">
-                <label for="billingEmail">Billing Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="billingEmail"
-                  aria-describedby="emailHelp"
-                  placeholder="your-email@hurizun.com"
-                  required
-                />
-                <!-- <small id="emailHelp" class="form-text text-muted">
+              <div class="row">
+                <div class="form-group col">
+                  <label for="billingEmail">Billing Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="billingEmail"
+                    aria-describedby="emailHelp"
+                    placeholder="your-email@hurizun.com"
+                    required
+                  />
+                  <!-- <span id="emailHelp" class="form-text text-muted">
             We'll never share your email with anyone else.
-          </small> -->
-              </div>
-              <div class="form-group col">
-                <label for="billingPhone">Billing Phone</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="billingPhone"
-                  aria-describedby="telHelp"
-                  placeholder="(123) 456 7890"
-                  required
-                />
-                <!-- <small id="emailHelp" class="form-text text-muted">
+          </span> -->
+                </div>
+                <div class="form-group col">
+                  <label for="billingPhone">Billing Phone</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="billingPhone"
+                    aria-describedby="telHelp"
+                    placeholder="(123) 456 7890"
+                    required
+                  />
+                  <!-- <span id="emailHelp" class="form-text text-muted">
             We'll never share your email with anyone else.
-          </small> -->
+          </span> -->
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="resaleLicense">Resale License / Tax ID </label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="resaleLicense"
-                  aria-describedby="licenseHelp"
-                  placeholder=""
-                  required
-                />
-                <small id="licenseHelp" class="form-text text-muted">
-                  Proof of business is required
-                </small>
-              </div>
-              <div class="custom-file col-md-6">
-                <label for="resaleLicense"
-                  >Proof of Resale License / Tax ID
-                </label>
-                <input
-                  type="file"
-                  class="custom-file-input"
-                  id="resaleLicensePDF"
-                  required
-                />
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="resaleLicense">Resale License / Tax ID </label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="resaleLicense"
+                    aria-describedby="licenseHelp"
+                    placeholder=""
+                    required
+                  />
+                  <span id="licenseHelp" class="form-text text-muted">
+                    Proof of business is required
+                  </span>
+                </div>
+                <div class="custom-file col-md-6">
+                  <label for="resaleLicense"
+                    >Proof of Resale License / Tax ID
+                  </label>
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    id="resaleLicensePDF"
+                    required
+                  />
 
-                <!-- <div class="invalid-feedback">
+                  <!-- <div class="invalid-feedback">
                 Example invalid custom file feedback
               </div> -->
+                </div>
               </div>
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-                required
-              />
-              <label class="form-check-label" for="exampleCheck1"
-                >I agree to wholesale terms</label
-              >
-            </div>
-            <button type="button" class="btn btn-primary">Back</button>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              v-on:click="section2 = !section2; section3 = !section3 "
-            >
-              Next
-            </button>
-          </form>
-        </section>
-        <section v-if="section3">
-          <form>
-            <small class="form-text text-muted"> STEP 3 of 3 </small>
-            <h3>Create Password</h3>
-            <div class="row">
-              <div class="form-group col">
-                <label for="exampleInputPassword1">Enter Password</label>
+              <div class="form-check">
                 <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                  required
                 />
+                <label class="form-check-label" for="exampleCheck1"
+                  >I agree to wholesale terms</label
+                >
               </div>
-              <div class="form-group col">
-                <label for="exampleInputPassword1">Repeat Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                />
-              </div>
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="subscribeCheck"
-              />
-              <label class="form-check-label" for="subscribeCheck"
-                >Subcribe to our email newsletter</label
+              <button type="button" class="btn btn-warning">Back</button>
+              <button
+                type="submit"
+                class="btn btn-warning"
+                v-on:click="section2 = !section2; section3 = !section3 "
               >
-            </div>
-            <button
-              type="button"
-              class="btn btn-primary"
-              v-on:click="section1= !section1 ;section2 = !section2; section3 = true"
-            >
-              Preview Form
-            </button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </section>
+                Next
+              </button>
+            </form>
+          </section>
+          <section v-if="section3">
+            <form>
+              <span class="form-text text-muted"> STEP 3 of 3 </span>
+              <h3>Create Password</h3>
+              <div class="row">
+                <div class="form-group col">
+                  <label for="exampleInputPassword1">Enter Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group col">
+                  <label for="exampleInputPassword1">Repeat Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="subscribeCheck"
+                />
+                <label class="form-check-label" for="subscribeCheck"
+                  >Subcribe to our email newsletter</label
+                >
+              </div>
+              <button
+                type="button"
+                class="btn btn-warning"
+                v-on:click="section1= !section1 ;section2 = !section2; section3 = true"
+              >
+                Preview Form
+              </button>
+              <a type="submit" href="signin.html" class="btn btn-warning"
+                >Submit</a
+              >
+            </form>
+          </section>
+        </div>
       </div>
     </main>
     <script src="/toy-catalog/public/js/register.js"></script>
@@ -362,7 +469,7 @@
           section1: false,
           section2: false,
           section3: false,
-        }
+        },
       });
     </script>
 

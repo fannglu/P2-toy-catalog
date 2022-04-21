@@ -32,12 +32,28 @@
         background-color: rgba($color: $color-oceanG, $alpha: 0.5);
         color: #fff;
         border: 1px solid black;
+         letter-spacing: 2px;
       }
       button:hover {
         background-color: rgba($color: #fff, $alpha: 0.3);
         transition: all 0.4s ease-out;
         color: black;
       }
+    }
+  }
+  #registerbtn {
+    a {
+      width: 10rem;
+      background-color: rgba($color: $color-oceanG, $alpha: 0.5);
+      color: #fff;
+      border: 1px solid black;
+      font-family: $font2;
+      letter-spacing: 2px;
+    }
+    a:hover {
+      background-color: rgba($color: #fff, $alpha: 0.3);
+      transition: all 0.4s ease-out;
+      color: black;
     }
   }
 }

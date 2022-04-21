@@ -116,7 +116,7 @@ main .right ul li {
   font-weight: bolder;
 }
 
-main .right button {
+main .right a {
   background-color: rgba(255, 255, 255, 0.3);
   width: 15rem;
   margin-left: 18rem;
@@ -125,7 +125,7 @@ main .right button {
   padding: 1rem 2rem;
 }
 
-main .right button:hover {
+main .right a:hover {
   background-color: rgba(22, 111, 17, 0.5);
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
@@ -134,6 +134,12 @@ main .right button:hover {
 
 #products {
   text-align: center;
+}
+
+#products h1 {
+  font-family: "Fredoka One", cursive;
+  color: white;
+  letter-spacing: 5px;
 }
 
 #products .card {

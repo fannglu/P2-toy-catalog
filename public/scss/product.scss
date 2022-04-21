@@ -2,6 +2,11 @@
 
 #products {
   text-align: center;
+  h1 {
+    font-family: $font2;
+    color: rgba($color: $color-white, $alpha: 1);
+    letter-spacing: 5px;
+  }
   .card {
     display: inline-flex;
     width: 15rem;

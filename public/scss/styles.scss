@@ -97,6 +97,8 @@ main {
       margin-left: 7rem;
       margin-bottom: 0;
       border: solid 1px black;
+      font-family: $font2;
+      color: rgba($color: $color-oceanG, $alpha: 1);
     }
     ul {
       background-color: rgba($color: #fff, $alpha: 0.1);
@@ -108,14 +110,18 @@ main {
       margin-bottom: 0;
       border: solid 1px black;
       font-weight: 900;
+      font-family: $font2;
       li {
         font-weight: bolder;
         color: #272121;
         text-align: left;
         padding-top: 0.5rem;
-        padding-left: 5rem;
+        padding-left: 3rem;
         font-size: 20px;
         font-weight: bolder;
+        font-family: $font2;
+        color: rgba($color: rgb(10, 117, 60), $alpha: 1);
+        letter-spacing: 2px;
       }
     }
     a {
@@ -125,6 +131,8 @@ main {
       font-size: 25px;
       border: solid 1px black;
       padding: 1rem 2rem;
+      font-family: $font2;
+      letter-spacing: 2px;
     }
     a:hover {
       background-color: rgba($color: $color-oceanG, $alpha: 0.5);
@@ -132,4 +140,23 @@ main {
       color: white;
     }
   }
+}
+footer {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+  /* .navbar .nav-item:hover .nav-link {
+        } */
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+  
 }

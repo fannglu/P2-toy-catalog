@@ -1,0 +1,28 @@
+@import "styles.scss";
+
+#registerPage {
+  h3,
+  h2 {
+    font-family: $font2;
+    color: rgba($color: $color-white, $alpha: 0.8);
+  }
+  h2 {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+  }
+  span {
+    color: black !important;
+    padding: 1rem 0.5rem;
+  }
+  form {
+    label {
+      font-weight: bold;
+      padding: 0.5rem 0;
+    }
+    button, a {
+      margin: 1rem 0;
+      background-color: $color-oceanG;
+      color: white;
+    }
+  }
+}

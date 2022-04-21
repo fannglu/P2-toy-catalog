@@ -992,15 +992,15 @@ var productsList = new Vue({
                     `,
     },
   },
-  //   computed: {
-  //     groups() {
-  //       var group = this.product;
-  //       let result = "";
-  //       var k = 12;
-  //       for (var i = 0; i < group.legth; i++) {
-  //         group += group[i] < k;
-  //       }
-  //       return groups();
-  //     },
-  //   },
+    computed: {
+      groups() {
+        var group = this.product;
+        let result = "";
+        var k = 12;
+        for (var i = 0; i < group.legth; i++) {
+          group += group[i] < k;
+        }
+        return groups();
+      },
+    },
 });
