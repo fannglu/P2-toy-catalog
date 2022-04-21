@@ -1,0 +1,65 @@
+@import "styles.scss";
+
+#products {
+  text-align: center;
+  .card {
+    display: inline-flex;
+    width: 15rem;
+    border: none;
+    height: 28rem;
+    background: rgba($color: #ffffff, $alpha: 0.5);
+    margin: 1rem 1rem;
+    border-radius: 30px;
+
+    .card-img-top {
+      height: 12rem;
+      width: 15rem;
+      object-fit: contain;
+      padding: 0.5rem;
+      background-color: $color-white;
+    }
+    .card-body {
+      text-align: center;
+
+      height: fit-content;
+      h5 {
+        font-family: $font2;
+        font-size: large;
+        letter-spacing: 0.8px;
+        color: black;
+        padding: 2px 0;
+      }
+      p {
+        font-family: $font;
+        font-size: larger;
+        letter-spacing: 1px;
+        font-weight: bolder;
+        color: black;
+      }
+      .btnC {
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+        align-items: center;
+        margin-left: 0.5rem;
+
+        a.btn-primary {
+          width: 9rem;
+          padding: 0.5rem 1.25rem;
+          display: flex;
+          text-align: center;
+          background-color: rgba($color: $color-oceanG, $alpha: 0.75);
+          font-family: $font2;
+          letter-spacing: 1px;
+        }
+        i {
+          color: rgba($color: $color-brightorange, $alpha: 1);
+          font-size: 20px;
+          border-radius: 50% 50%;
+          background-color: rgba($color: #ffffff, $alpha: 1);
+          padding: 0.75rem;
+        }
+      }
+    }
+  }
+}

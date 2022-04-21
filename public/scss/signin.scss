@@ -1,0 +1,43 @@
+@import "styles.scss";
+
+#signin {
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  font-family: $font2;
+  margin: auto auto;
+  justify-content: center;
+  #signinForm {
+    max-width: 30rem;
+    padding: 15px;
+    margin: 5rem 0;
+
+    .form-signin {
+      padding: 1rem 0;
+      font-family: $font2 !important;
+      h1 {
+        font-size: 30px;
+        font-family: $font2 !important;
+        margin-bottom: 2.5rem;
+      }
+      input {
+        margin: 1rem 0;
+      }
+      .checkbox {
+        font-weight: 400;
+        font-size: larger;
+      }
+      button {
+        width: 10rem;
+        background-color: rgba($color: $color-oceanG, $alpha: 0.5);
+        color: #fff;
+        border: 1px solid black;
+      }
+      button:hover {
+        background-color: rgba($color: #fff, $alpha: 0.3);
+        transition: all 0.4s ease-out;
+        color: black;
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+* {
+  font-family: "Zilla Slab", serif;
+}
+
+* body {
+  background: radial-gradient(circle at 70% 180%, #115d6f 0%, #fdf497 0%, #fdf497 30%, #f6bcbb 60%, #19942d 90%);
+}
+
+header {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header nav {
+  background-color: #166f11 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem 2rem;
+}
+
+header nav a {
+  color: white !important;
+}
+
+header nav #main_nav .dropdown-menu a.dropdown-item {
+  color: #158998 !important;
+}
+
+header nav #main_nav .dropdown-menu .dropdown-item:active {
+  background-color: transparent !important;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  min-height: 100vh;
+}
+
+main .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center none;
+      -ms-flex-align: center none;
+          align-items: center none;
+  position: relative;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+
+main .left .shape {
+  width: 80%;
+  height: 70%;
+  background-color: white;
+  margin: 1rem 3rem;
+  text-align: center;
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+main .left .shape .image {
+  padding: 1rem 1rem;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.4;
+}
+
+main .left .image2 {
+  float: left;
+  position: absolute;
+  height: 10rem;
+  margin: 42% 15%;
+  opacity: 0.7;
+}
+
+main .right h3 {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 70%;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 5rem;
+  margin-left: 7rem;
+  margin-bottom: 0;
+  border: solid 1px black;
+}
+
+main .right ul {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 50%;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 25px;
+  list-style: none;
+  margin-bottom: 0;
+  border: solid 1px black;
+  font-weight: 900;
+}
+
+main .right ul li {
+  font-weight: bolder;
+  color: #272121;
+  text-align: left;
+  padding-top: 0.5rem;
+  padding-left: 5rem;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+main .right button {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 15rem;
+  margin-left: 18rem;
+  font-size: 25px;
+  border: solid 1px black;
+  padding: 1rem 2rem;
+}
+
+main .right button:hover {
+  background-color: rgba(22, 111, 17, 0.5);
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  color: white;
+}
+
+div#contactMessage {
+  color: rgba(255, 255, 255, 0.8);
+  width: 90%;
+}
+
+div#contactMessage h1,
+div#contactMessage h4 {
+  font-family: "Fredoka One", cursive;
+}
+
+div#contactMessage h1 {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+div#contactMessage h4,
+div#contactMessage p {
+  padding: 0 1rem;
+  margin-left: 2rem;
+}
+
+div#contactMessage p {
+  color: black;
+  font-weight: bolder;
+  font-size: large;
+}
+
+div#teamInfo {
+  padding: 0 1rem;
+  height: 100%;
+}
+
+div#teamInfo h4 {
+  font-family: "Fredoka One", cursive;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  border-top: 1px solid white;
+  padding: 2rem 0;
+}
+
+div#teamInfo .card {
+  display: inline-block;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+div#teamInfo .card-body {
+  padding: 2rem 2rem;
+}
+
+div#teamInfo h5 {
+  font-family: "Fredoka One", cursive;
+}
+
+.contactform {
+  position: relative;
+  margin-top: 10rem;
+  margin-left: 5rem;
+}
+
+.contactform form {
+  width: 80%;
+}
+
+.contactform form h1 {
+  font-family: "Fredoka One", cursive;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.contactform form label {
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+.contactform form button {
+  margin-top: 1rem;
+  background-color: #166f11;
+}
+/*# sourceMappingURL=contact.css.map */

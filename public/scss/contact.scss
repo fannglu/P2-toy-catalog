@@ -1,0 +1,71 @@
+@import "styles.scss";
+
+div#contactMessage {
+  color: rgba($color: $color-white, $alpha: 0.8);
+  width: 90%;
+  h1,
+  h4 {
+    font-family: $font2;
+  }
+  h1 {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  h4,
+  p {
+    padding: 0 1rem;
+    margin-left: 2rem;
+  }
+  p {
+    color: black;
+    font-weight: bolder;
+    font-size: large;
+  }
+}
+div#teamInfo {
+  padding: 0 1rem;
+  height: 100%;
+  h4 {
+    font-family: $font2;
+    color: rgba($color: $color-white, $alpha: 0.8);
+    text-align: center;
+    border-top: 1px solid white;
+    padding: 2rem 0;
+  }
+  .card {
+    display: inline-block;
+    text-align: center;
+    background-color: rgba($color: #fff, $alpha: 0.5);
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+  .card-body {
+    padding: 2rem 2rem;
+  }
+  h5 {
+    font-family: $font2;
+  }
+}
+.contactform {
+  position: relative;
+  margin-top: 10rem;
+margin-left: 5rem;
+  form {
+    width: 80%;
+    // padding: 0.5rem 0;
+    h1 {
+      font-family: $font2;
+      color: rgba($color: $color-white, $alpha: 0.8);
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+      padding: 0.5rem 0;
+    }
+    button {
+        margin-top: 1rem;
+        background-color: $color-oceanG;
+        
+    }
+  }
+}
