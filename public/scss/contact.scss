@@ -49,9 +49,9 @@ div#teamInfo {
 .contactform {
   position: relative;
   margin-top: 10rem;
-margin-left: 5rem;
+  margin-left: 5rem;
   form {
-    width: 80%;
+    // width: 80%;
     // padding: 0.5rem 0;
     h1 {
       font-family: $font2;
@@ -63,9 +63,8 @@ margin-left: 5rem;
       padding: 0.5rem 0;
     }
     button {
-        margin-top: 1rem;
-        background-color: $color-oceanG;
-        
+      margin-top: 1rem;
+      background-color: $color-oceanG;
     }
   }
 }

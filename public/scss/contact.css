@@ -92,6 +92,8 @@ main .right h3 {
   margin-left: 7rem;
   margin-bottom: 0;
   border: solid 1px black;
+  font-family: "Fredoka One", cursive;
+  color: #166f11;
 }
 
 main .right ul {
@@ -104,6 +106,7 @@ main .right ul {
   margin-bottom: 0;
   border: solid 1px black;
   font-weight: 900;
+  font-family: "Fredoka One", cursive;
 }
 
 main .right ul li {
@@ -111,9 +114,12 @@ main .right ul li {
   color: #272121;
   text-align: left;
   padding-top: 0.5rem;
-  padding-left: 5rem;
+  padding-left: 3rem;
   font-size: 20px;
   font-weight: bolder;
+  font-family: "Fredoka One", cursive;
+  color: #0a753c;
+  letter-spacing: 2px;
 }
 
 main .right a {
@@ -123,6 +129,8 @@ main .right a {
   font-size: 25px;
   border: solid 1px black;
   padding: 1rem 2rem;
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 2px;
 }
 
 main .right a:hover {
@@ -130,6 +138,25 @@ main .right a:hover {
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
   color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+  /* .navbar .nav-item:hover .nav-link {
+        } */
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
 }
 
 div#contactMessage {

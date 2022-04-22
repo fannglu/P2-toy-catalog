@@ -2,6 +2,8 @@
 
 #products {
   text-align: center;
+  justify-content: center;
+  align-items: center;
   h1 {
     font-family: $font2;
     color: rgba($color: $color-white, $alpha: 1);
@@ -65,6 +67,22 @@
           padding: 0.75rem;
         }
       }
+    }
+  }
+  .nav {
+    justify-content: center;
+    padding: 2rem;
+    button.page-link {
+      display: inline-block;
+    }
+    button.page-link {
+      font-size: 20px;
+      color: #29b3ed;
+      font-weight: 500;
+    }
+    .offset {
+      width: 500px !important;
+      margin: 20px auto;
     }
   }
 }

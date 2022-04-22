@@ -965,19 +965,35 @@ var productsList = new Vue({
         catagories: "Educational",
       },
     ],
+    page: 1,
+    perPage: 20,
+    pages: [],
   },
-
-  // mounted: {
-  //   fetch('./items.json')
-  //     .then(res => res.json())
-  //     .then(data => (this.catalogData = data))
-  //     .catch(err => console.log(err.message));
+  // computed: {
+  //   totalPages: function () {
+  //     return Math.ceil(this.resultCount / this.itemsPerPage);
+  //   },
+  // },
+  // methods: {
+  //   setPage: function (pageNumber) {
+  //     this.currentPage = pageNumber;
+  //   },
+  // },
+  // filters: {
+  //   paginate: function (list) {
+  //     this.resultCount = list.length;
+  //     if (this.currentPage >= this.totalPages) {
+  //       this.currentPage = this.totalPages - 1;
+  //     }
+  //     var index = this.currentPage * this.itemsPerPage;
+  //     return list.slice(index, index + this.itemsPerPage);
+  //   },
   // },
   components: {
     productCatalog: {
       props: ["catalogItems"],
       template: `
-                         <div class="card " id="catalogCard">
+                         <div class="card " id="catalogCard" > 
                             <img class="card-img-top" v-bind:src="catalogItems.url" alt="Product Image">
                             <div class="card-body">
                                 <h5 class="card-title">{{catalogItems.itemName}}</h5>
@@ -989,18 +1005,62 @@ var productsList = new Vue({
                                </div>
                             </div>
                         </div>
+                         
+        
+
                     `,
     },
   },
-    computed: {
-      groups() {
-        var group = this.product;
-        let result = "";
-        var k = 12;
-        for (var i = 0; i < group.legth; i++) {
-          group += group[i] < k;
-        }
-        return groups();
-      },
+  methods: {
+    getPosts() {
+      let data = [];
+      for (let i = 0; i < 80; i++) {
+        this.product.push(i);
+      }
     },
+    setPages() {
+      // let numberOfPages = Math.ceil(this.product.length / this.perPage);
+      let numberOfPages = 4
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    paginate(product) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return product.slice(from, to);
+    },
+  },
+  computed: {
+    displayedPosts() {
+      return this.paginate(this.product);
+    },
+  },
+  watch: {
+    product() {
+      this.setPages();
+    },
+  },
+  created() {
+    this.getPosts();
+  },
+  filters: {
+    trimWords(value) {
+      return value.split(" ").splice(0, 20).join(" ") + "...";
+    },
+  },
+
+  // computed: {
+  //   groups() {
+  //     var group = this.product;
+  //     let result = "";
+  //     var k = 12;
+  //     for (var i = 0; i < group.legth; i++) {
+  //       group += group[i] < k;
+  //     }
+  //     return groups();
+  //   },
+  // },
 });

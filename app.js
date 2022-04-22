@@ -17,7 +17,23 @@ app.use(bodyParser.json());
 // app.set("view engine", "html");
 
 app.get("/", (req, res) => {
-  res.sendFile("index.html");
+  res.sendFile(path.join(__dirname+'/index.html'));
+});
+
+app.get("/likedProducts", (req, res) => {
+  res.sendFile("liked.html");
+});
+
+app.get("/login", (req, res) => {
+  res.sendFile("signin.html");
+});
+
+app.get("/register", (req, res) => {
+  res.sendFile("register.html");
+});
+
+app.get("/catalog", (req, res) => {
+  res.sendFile("product.html");
 });
 
 app.listen(port, () => {
