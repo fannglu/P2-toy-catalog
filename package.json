@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "watch": "nodemon ./app.js"
   },
   "author": "Fang Lu Lim",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "connect-ensure-login": "^0.1.1",
     "cookie-session": "^2.0.0",
@@ -27,6 +28,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.0.0",
+    "session": "^0.1.0",
     "vue": "^3.2.33",
     "vuejs-paginate": "^2.1.0"
   },
