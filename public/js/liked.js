@@ -1,5 +1,5 @@
 var productsList = new Vue({
-  el: "#products",
+  el: "#liked",
 
   data: {
     product: [
@@ -968,76 +968,19 @@ var productsList = new Vue({
     page: 1,
     perPage: 20,
     pages: [],
-    quantity: 0,
-    items: [],
-    showCart: false,
-    verified: false,
-    quantity: 1,
-  },
-  components: {
-    productCatalog: {
-      props: ["catalogItems"],
-      template: `
-                         <div class="card " id="catalogCard" > 
-                            <img class="card-img-top" v-bind:src="catalogItems.url" alt="Product Image">
-                            <div class="card-body">
-                                <h5 class="card-title">{{catalogItems.itemName}}</h5>
-                                <p class="card-text"> <strong>SKU: </strong>{{catalogItems.itemNumber}}</br>
-                                    <strong>Cost: </strong> {{catalogItems.caseCost}}</br></p>
-                                <div class="row btnC">
-                                    <a href="#" class="btn btn-primary col-11">Add to Cart</a>
-                                    <a href="#"  class="btn col-1"><i class="fa-solid fa-heart"></i></a>
-                               </div>
-                            </div>
-                        </div>
-                         
-        
-
-                    `,
-    },
-    props: ["likedItems"], 
-    template: 1
+    cart: 0,
+  },renderTriggered({key, target, type}) {
+    console.log({ key, target, type });
   },
   methods: {
-    getPosts() {
-      let data = [];
-      for (let i = 0; i < 80; i++) {
-        this.product.push(i);
-      }
-    },
-    setPages() {
-      let numberOfPages = 4;
-      for (let index = 1; index <= numberOfPages; index++) {
-        this.pages.push(index);
-      }
-    },
-    paginate(product) {
-      let page = this.page;
-      let perPage = this.perPage;
-      let from = page * perPage - perPage;
-      let to = page * perPage;
-      return product.slice(from, to);
-    },
-    // addToLiked(item) {
-    //   item.quantity += 1;
-    //   this.product.push(item);
-    // },
-    // removeFromLike(item) {
-    //   item.quantity -= 1;
-    //   this.product.splice(this.product.indexOf(item), 1);
-    // },
+    addtoLiked() {
+      this.cart += 1
+    }
   },
   computed: {
     displayedPosts() {
       return this.paginate(this.product);
     },
-    // total() {
-    //   var total = 0;
-    //   for (var i = 0; i < 80; i++) {
-    //     total += this.product[i].caseCost;
-    //   }
-    //   return total;
-    // },
   },
   watch: {
     product() {
