@@ -64,7 +64,7 @@ router.get("/", (req, res) => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.use(express.static(path.join(__dirname, "public"))); // adding this below "/" because wanted to render sign-in page first
+app.use(express.static(path.join(__dirname, "/public"))); // adding this below "/" because wanted to render sign-in page first
 
 router.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/index.html"));

@@ -19,10 +19,12 @@
       font-weight: bold;
       padding: 0.5rem 0;
     }
-    button, a {
+    button {
       margin: 1rem 0;
       background-color: $color-oceanG;
       color: white;
+      width: 5rem;
+      padding: 1rem;
     }
   }
 }

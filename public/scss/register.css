@@ -159,115 +159,31 @@ footer {
   }
 }
 
-#products {
-  text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+#registerPage h3,
+#registerPage h2 {
+  font-family: "Fredoka One", cursive;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-#products h1 {
-  font-family: "Fredoka One", cursive;
+#registerPage h2 {
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+}
+
+#registerPage span {
+  color: black !important;
+  padding: 1rem 0.5rem;
+}
+
+#registerPage form label {
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+#registerPage form button, #registerPage form a {
+  margin: 1rem 0;
+  background-color: #166f11;
   color: white;
-  letter-spacing: 5px;
+  width: auto;
 }
-
-#products .card {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 15rem;
-  border: none;
-  height: 28rem;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 1rem 1rem;
-  border-radius: 30px;
-}
-
-#products .card .card-img-top {
-  height: 12rem;
-  width: 15rem;
-  -o-object-fit: contain;
-     object-fit: contain;
-  padding: 0.5rem;
-  background-color: white;
-}
-
-#products .card .card-body {
-  text-align: center;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-#products .card .card-body h5 {
-  font-family: "Fredoka One", cursive;
-  font-size: large;
-  letter-spacing: 0.8px;
-  color: black;
-  padding: 2px 0;
-}
-
-#products .card .card-body p {
-  font-family: "Zilla Slab", serif;
-  font-size: larger;
-  letter-spacing: 1px;
-  font-weight: bolder;
-  color: black;
-}
-
-#products .card .card-body .btnC {
-  width: 100%;
-  height: auto;
-  margin-top: 1rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: 0.5rem;
-}
-
-#products .card .card-body .btnC a.btn-primary {
-  width: 9rem;
-  padding: 0.5rem 1.25rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: center;
-  background-color: rgba(22, 111, 17, 0.75);
-  font-family: "Fredoka One", cursive;
-  letter-spacing: 1px;
-}
-
-#products .card .card-body .btnC i {
-  color: #fdc204;
-  font-size: 20px;
-  border-radius: 50% 50%;
-  background-color: white;
-  padding: 0.75rem;
-}
-
-#products .nav {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 2rem;
-}
-
-#products .nav button.page-link {
-  display: inline-block;
-}
-
-#products .nav button.page-link {
-  font-size: 20px;
-  color: #29b3ed;
-  font-weight: 500;
-}
-
-#products .nav .offset {
-  width: 500px !important;
-  margin: 20px auto;
-}
-/*# sourceMappingURL=product.css.map */
+/*# sourceMappingURL=register.css.map */

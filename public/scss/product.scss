@@ -9,62 +9,97 @@
     color: rgba($color: $color-white, $alpha: 1);
     letter-spacing: 5px;
   }
-  .card {
-    display: inline-flex;
-    width: 15rem;
-    border: none;
-    height: 28rem;
-    background: rgba($color: #ffffff, $alpha: 0.5);
-    margin: 1rem 1rem;
-    border-radius: 30px;
 
-    .card-img-top {
-      height: 12rem;
-      width: 15rem;
-      object-fit: contain;
-      padding: 0.5rem;
-      background-color: $color-white;
+  button {
+    width: auto;
+    padding: 0.5rem 1.25rem;
+    // display: flex;
+    text-align: center;
+    background-color: rgba($color: $color-oceanG, $alpha: 0.75);
+    font-family: $font2;
+    letter-spacing: 1px;
+  }
+  .cartItem {
+    button {
+      float: right;
+      display: inline;
+      margin: 10px;
+      &:hover {
+        background: darken($color-oceanG, 2%);
+      }
     }
-    .card-body {
-      text-align: center;
+  }
+  #catalogCard {
+    margin-top: 2rem;
+    h5 {
+      font-family: $font2;
+      color: rgba($color: $color-white, $alpha: 1);
+      text-align: left;
+      margin-left: 2rem;
+      letter-spacing: 3px;
+      font-weight: lighter;
+    }
 
-      height: fit-content;
-      h5 {
-        font-family: $font2;
-        font-size: large;
-        letter-spacing: 0.8px;
-        color: black;
-        padding: 2px 0;
-      }
-      p {
-        font-family: $font;
-        font-size: larger;
-        letter-spacing: 1px;
-        font-weight: bolder;
-        color: black;
-      }
-      .btnC {
-        width: 100%;
-        height: auto;
-        margin-top: 1rem;
-        align-items: center;
-        margin-left: 0.5rem;
+    .card {
+      display: inline-flex;
+      width: 15rem;
+      border: none;
+      height: 25rem;
+      background: rgba($color: #ffffff, $alpha: 0.5);
+      margin: 1rem 1rem;
+      border-radius: 30px;
 
-        a.btn-primary {
-          width: 9rem;
-          padding: 0.5rem 1.25rem;
-          display: flex;
-          text-align: center;
-          background-color: rgba($color: $color-oceanG, $alpha: 0.75);
+      .card-img-top {
+        height: 12rem;
+        width: 15rem;
+        object-fit: contain;
+        padding: 0.5rem;
+        background-color: $color-white;
+      }
+      .card-body {
+        text-align: center;
+        margin: auto;
+        height: fit-content;
+        vertical-align: middle;
+        flex: none !important;
+        h5 {
           font-family: $font2;
-          letter-spacing: 1px;
+          font-size: large;
+          letter-spacing: 0.8px;
+          color: black;
+          margin-left: 0;
+          text-align: center;
         }
-        i {
-          color: rgba($color: $color-brightorange, $alpha: 1);
-          font-size: 20px;
-          border-radius: 50% 50%;
-          background-color: rgba($color: #ffffff, $alpha: 1);
-          padding: 0.75rem;
+        p {
+          font-family: $font;
+          font-size: larger;
+          letter-spacing: 1px;
+          font-weight: bolder;
+          color: black;
+        }
+        .btnC {
+          width: 100%;
+          height: auto;
+          margin-top: 1rem;
+          align-items: center;
+          margin-left: 0.5rem;
+
+          // a.btn-primary {
+          //   width: 9rem;
+          //   padding: 0.5rem 1.25rem;
+          //   display: flex;
+          //   text-align: center;
+          //   background-color: rgba($color: $color-oceanG, $alpha: 0.75);
+          //   font-family: $font2;
+          //   letter-spacing: 1px;
+          // }
+          // i {
+          //   color: rgba($color: $color-brightorange, $alpha: 1);
+          //   font-size: 20px;
+          //   border-radius: 50% 50%;
+          //   background-color: rgba($color: #ffffff, $alpha: 1);
+          //   padding: 0.75rem;
+          // }
         }
       }
     }
@@ -83,6 +118,78 @@
     .offset {
       width: 500px !important;
       margin: 20px auto;
+    }
+  }
+
+  .cart {
+    z-index: 100;
+    background: rgba($color: white, $alpha: 0.3);
+    padding: 20px 30px;
+    position: relative;
+    left: 50%;
+    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+    margin-top: 5rem;
+    width: 40%;
+    text-align: center;
+    // display: inline-flex;
+    ul {
+      padding: 0 0;
+
+      h5 {
+        font-family: $font2;
+        letter-spacing: 1px;
+        color: $color-oceanG;
+      }
+      p {
+        letter-spacing: 2px;
+        strong {
+          font-family: $font2;
+        }
+        i {
+          padding-left: 1rem;
+        }
+      }
+    }
+    button {
+      text-align: center;
+      margin: auto;
+      padding: 0.25rem 1rem;
+      background-color: rgba($color: $color-oceanG, $alpha: 0.75);
+      font-family: $font2;
+      letter-spacing: 1px;
+      color: rgba($color: $color-white, $alpha: 1);
+    }
+  }
+  .checkout {
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+    width: 80%;
+    padding: 50px 60px;
+    margin: auto;
+    h3 {
+      font-family: $font2;
+      letter-spacing: 2px;
+    }
+    h5 {
+      margin-top: 1rem;
+      text-align: left;
+      padding: 2rem 0;
+    }
+    span {
+      float: right;
+    }
+    strong {
+      font-family: $font2;
+    }
+    button {
+      text-align: center;
+      margin: auto;
+      padding: 1rem 2rem;
+      background-color: rgba($color: $color-oceanG, $alpha: 0.75);
+      font-family: $font2;
+      letter-spacing: 2px;
+      color: rgba($color: $color-white, $alpha: 1);
+      margin-top: 3rem;
     }
   }
 }
