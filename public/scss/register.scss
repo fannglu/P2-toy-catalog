@@ -17,14 +17,21 @@
   form {
     label {
       font-weight: bold;
-      padding: 0.5rem 0;
+      // padding: 0.5rem 0;
     }
     button {
-      margin: 1rem 0;
-      background-color: $color-oceanG;
-      color: white;
-      width: 5rem;
-      padding: 1rem;
+      margin: 2rem 0;
+      background-color: rgba($color: $color-oceanG, $alpha: 0.8);
+      color: $color-white;
+      width: 10rem;
+      padding: 0.5rem;
+      font-family: $font2;
+      text-align: center;
+      float: right;
+     
+    }
+    #checkbox {
+      margin-top: 1rem;
     }
   }
 }

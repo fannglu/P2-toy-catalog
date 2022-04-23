@@ -177,13 +177,20 @@ footer {
 
 #registerPage form label {
   font-weight: bold;
-  padding: 0.5rem 0;
 }
 
-#registerPage form button, #registerPage form a {
-  margin: 1rem 0;
-  background-color: #166f11;
+#registerPage form button {
+  margin: 2rem 0;
+  background-color: rgba(22, 111, 17, 0.8);
   color: white;
-  width: auto;
+  width: 10rem;
+  padding: 0.5rem;
+  font-family: "Fredoka One", cursive;
+  text-align: center;
+  float: right;
+}
+
+#registerPage form #checkbox {
+  margin-top: 1rem;
 }
 /*# sourceMappingURL=register.css.map */
