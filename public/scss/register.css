@@ -193,4 +193,19 @@ footer {
 #registerPage form #checkbox {
   margin-top: 1rem;
 }
+
+#registerPage li {
+  text-align: center;
+  list-style: none;
+}
+
+#registerPage li li::before {
+  content: "! Error : ";
+  color: red;
+}
+
+#registerPage li li::after {
+  content: "! Error : ";
+  color: red;
+}
 /*# sourceMappingURL=register.css.map */

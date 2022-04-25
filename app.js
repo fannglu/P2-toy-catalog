@@ -1,19 +1,13 @@
 const express = require("express");
-// const cors = require("cors");
-const bodyParser = require("body-parser");
 const path = require("path");
-const router = express.Router();
-// const session = require("session");
+const routes = require("./routes/index");
+const bodyParser = require("body-parser");
+const passport = require("passport");
 const mongoose = require("mongoose");
-// const Registration = mongoose.model("Registration");
-const { check, validationResult } = require("express-validator");
-
-//define express app
+const mongoSanitize = require("express-mongo-sanitize");
 const app = express();
-const port = process.env.port || 5000;
-
 const expressSession = require("express-session")({
-  secret: "secret",
+  secret: "westcliffBootcamp",
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -21,134 +15,31 @@ const expressSession = require("express-session")({
     maxAge: 60000,
   },
 });
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.use(mongoSanitize());
 
-// files || directory
-app.use(expressSession);
-app.use(bodyParser.json());
+app.use(express.json({ limit: "10kb" }));
+app.use(require("morgan")("combined"));
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/", routes);
+
+app.use(express.static("public"));
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-app.use("/", router);
-app.use(
-  require("express-session")({
+  expressSession({
     secret: "westcliff",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1 * 60 * 1000,
+    },
+    catalog: new MongoStore({ mongooseConnection1: mongoose.connection }),
   })
 );
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* PASSPORT SETUP */
-const passport = require("passport");
-const Strategy = require("passport-local").Strategy;
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* PASSPORT LOCAL AUTHENTICATION */
-
-// passport.use(new Strategy(function(email, password, cb){
-//   rdb.email
-// });
-
-// passport.serializeUser(registerr.serializeUser());
-// passport.deserializeUser(registerr.deserializeUser());
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//routes
-
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/signin.html"));
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.use(express.static(path.join(__dirname, "/public"))); // adding this below "/" because wanted to render sign-in page first
-
-router.get("/home", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
-
-router.get("/catalog", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/product.html"));
-});
-app.get("/signin", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/signin.html"));
-});
-router.get("/contact", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/contact.html"));
-});
-router.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/register.html"));
-});
-router.get("/likedProducts", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/liked.html"));
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// const mongoose = require("mongoose");
-var rdb = mongoose.connection;
-
-mongoose.connect("mongodb://localhost:27017/ToyCatalog", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-mongoose.connection
-  .on("open", () => {
-    console.log("Mongoose connection open");
-  })
-  .on("error", (err) => {
-    console.log(`Connection error: ${err.message}`);
-  });
-
-router.post("/register", (req, res) => {
-  // console.log(req.body);
-  var firstname = req.body.firstname;
-  var lastname = req.body.lastname;
-  var email = req.body.email;
-  var contactPhone = req.body.contactPhone;
-  var password1 = req.body.password1;
-  var passport2 = req.body.password2;
-
-  // var registration = new Registration(req.body);
-
-  var registration = {
-    firstname: firstname,
-    lastname: lastname,
-    email: email,
-    contactPhone: contactPhone,
-    password1: password1,
-    password2: passport2,
-  };
-  rdb
-    .collection("registerr")
-    .insertOne(registration, function (err, collection) {
-      if (err) throw err;
-      console.log("Record inserted Succesfully");
-    });
-
-  return res.redirect("/signin");
-});
-
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.redirect("/login?info=" + info);
-    }
-
-    req.logIn(user, function (err) {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect("/");
-    });
-  })(req, res, next);
-});
-
-app.listen(5000, function () {
-  console.log(`Express is running on port 5000`);
-});
+module.exports = app;

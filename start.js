@@ -1,14 +1,17 @@
-// require("dotenv").config();
+require("dotenv").config();
 const mongoose = require("mongoose");
-// const express = require("express");
-// const path = require("path");
-// var app = express();
-const passportLocalMongoose = require("passport-local-mongoose");
+const app = require("./app");
 
-mongoose.connect("mongodb://localhost:27017/ToyCatalog", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(console.log(`MongoDB connected ${process.env.DATABASE}`))
+  .catch((err) => console.log(err));
+
 mongoose.connection
   .on("open", () => {
     console.log("Mongoose connection open");
@@ -17,9 +20,10 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
   });
 
-// require("./models/Registration");
-const app = require("./app");
 
-app.listen(5000, function () {
-  console.log(`Express is running on port 5000`);
+
+require("./models/Registration");
+
+const server = app.listen(8000, function () {
+  console.log(`Express is running on port ${server.address().port}`);
 });

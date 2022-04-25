@@ -1,0 +1,93 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Contact Us
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js' crossorigin='anonymous')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' rel='stylesheet')
+  link(rel='stylesheet' type='text/css' href='/scss/contact.css')
+  link(rel='stylesheet' type='text/css' href='/scss/styles.css')
+header.row
+  nav.navbar.navbar-expand-lg.navbar-dark
+    .container-fluid
+      a.navbar-brand(href='/home') Nerya LLC
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#main_nav' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #main_nav.navbar-collapse.collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/catalog')
+              i.fa-solid.fa-book
+              |  Catalog
+          li.nav-item
+            a.nav-link(href='/contact')
+              i.fa-solid.fa-envelope
+              |  Contact
+        ul.navbar-nav.ms-auto
+          li.nav-item
+            a.nav-link(href='/signin')
+              i.fa-solid.fa-user
+              |  Log In / Register
+main#contactpage.row
+  .container.col-6
+    #contactMessage
+      h1 Company Info
+      h4 Dear Valued Customer
+      p
+        | Thank you for choosing Hurizun. Our customers are important to us,
+        | and we want to do everything we can to meet their expectations.
+      p
+        | Do you need assistance or would you like to know more about our
+        | products and offerings? Our team is happy to assist you! Please fill
+        | out this form and we will get back to you within 1-3 business days.
+    #teamInfo
+      h4 Reach out to our Team!
+      .card(style='width: 18rem')
+        .card-body
+          h5.card-title Keith Belcher
+          h6.card-subtitle.mb-2.text-muted
+            | Head of Sales and Operation
+          ul.list-group.list-group-flush
+            li.list-group-item keith@hurizun.com
+      .card(style='width: 18rem')
+        .card-body
+          h5.card-title Johnny Hernandez
+          h6.card-subtitle.mb-2.text-muted Account Executive
+          ul.list-group.list-group-flush
+            li.list-group-item johnny@hurizun.com
+      .card(style='width: 18rem')
+        .card-body
+          h5.card-title Sales Team
+          h6.card-subtitle.mb-2.text-muted Order and Shipment
+          ul.list-group.list-group-flush
+            li.list-group-item sales@hurizun.com
+      .card(style='width: 18rem')
+        .card-body
+          h5.card-title Accounting Team
+          h6.card-subtitle.mb-2.text-muted Invoice
+          ul.list-group.list-group-flush
+            li.list-group-item accounting@hurizun.com
+  .container.col-6
+    .contactform
+      form
+        h1 Contact Us!
+        .form.row
+          .col-md-6.mb-3
+            label(for='contactFN') First name
+            input#contactFN.form-control(type='text' placeholder='First name' required='')
+          .col-md-6.mb-3
+            label(for='contactLN') Last name
+            input#contactLN.form-control(type='text' placeholder='Last name' required='')
+          .form-group
+            label(for='contactEmail') Email address
+            input#contactEmail.form-control(type='email' placeholder='name@example.com')
+          .form-group
+            label(for='contactPhone') Phone Number
+            input#contactPhone.form-control(type='tel' placeholder='(123) 456 7890')
+        .form-group
+          label(for='contactMessage') Contact Message
+          textarea#contactMessage.form-control(rows='3')
+        button.btn.btn-primary(type='submit') Submit form
+footer &amp;copy Copyright Nerya LLC 2022

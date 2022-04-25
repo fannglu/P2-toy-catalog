@@ -26,7 +26,6 @@
   </head>
   <body class="container-fluid">
     <header class="row">
-      <!-- <div class="container"> -->
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">Nerya LLC</a>
@@ -63,11 +62,8 @@
               </li>
             </ul>
           </div>
-          <!-- navbar-collapse.// -->
         </div>
-        <!-- container-fluid.// -->
       </nav>
-      <!-- </div> -->
     </header>
     <main>
       <div class="container" id="registerPage">
@@ -104,7 +100,6 @@
                 placeholder="Doe"
                 required
               />
-              <!-- <div class="valid-feedback">Looks good!</div> -->
             </div>
           </div>
           <div class="row">
@@ -119,8 +114,6 @@
                 placeholder="your-email@hurizun.com"
                 required
               />
-
-              <!-- <div class="valid-feedback">Looks good!</div> -->
             </div>
 
             <div class="form-group col">
@@ -134,7 +127,6 @@
                 placeholder="(123) 456 7890"
                 required
               />
-              <!-- <div class="valid-feedback">Looks good!</div> -->
             </div>
             <span id="emailHelp" class="form-text text-muted">
               Used for account login and purchase order notification
@@ -187,27 +179,5 @@
     </main>
     <script src="/toy-catalog/public/js/register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-
-    <script>
-      const register = new Vue({
-        el: "#form",
-        data: {
-          section1: false,
-          section2: false,
-          section3: false,
-        },
-      });
-    </script>
-
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const info = urlParams.get("info");
-
-      if (info) {
-        const errorMessage = document.getElementById("error-message");
-        errorMessage.innerText = info;
-        errorMessage.style.display = "block";
-      }
-    </script>
   </body>
 </html>
