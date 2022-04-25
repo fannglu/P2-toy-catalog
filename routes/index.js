@@ -11,10 +11,26 @@ const Registration = require("../models/Registration");
 
 const { check, validationResult } = require("express-validator");
 
-router.get("/login", connectEnsureLogin.ensureLoggedIn(), function (req, res) {
+// router.get(
+//   "/registrants",
+//   basic.check((req, res) => {
+//     Registration.find()
+//       .then((registrations) => {
+//         res.render("registrants", {
+//           title: "Listing registrations",
+//           registrations,
+//         });
+//       })
+//       .catch(() => {
+//         res.send("Sorry! Something went wrong.");
+//       });
+//   })
+// );
+
+router.get("/login", function (req, res) {
   res.render("signin");
 });
-router.get("/", (req, res) => {
+router.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   res.render("signin");
 });
 router.get(
@@ -39,22 +55,6 @@ router.get(
   }
 );
 
-// router.get(
-//   "/registrants",
-//   basic.check((req, res) => {
-//     Registration.find()
-//       .then((registrations) => {
-//         res.render("registrants", {
-//           title: "Listing registrations",
-//           registrations,
-//         });
-//       })
-//       .catch(() => {
-//         res.send("Sorry! Something went wrong.");
-//       });
-//   })
-// );
-
 router.post(
   "/register",
   [
@@ -72,17 +72,16 @@ router.post(
       .isMobilePhone()
       .isLength({ min: 1 })
       .withMessage("Please enter a valid phone number"),
-    check("password1")
+    check("username")
+      .isLength({ min: 1 })
+      .withMessage("Please enter a username"),
+    check("password")
       .isLength({ min: 1 })
       .withMessage("Please enter a password"),
-    check("password2")
-      .isLength({ min: 1 })
-      .withMessage("Password does not match"),
   ],
-  async (req, res) => {
+  (req, res) => {
     // console.log(req.body);
     const errors = validationResult(req);
-
     if (errors.isEmpty()) {
       Registration.register(
         new Registration({
@@ -90,8 +89,8 @@ router.post(
           lastname: req.body.lastname,
           email: req.body.email,
           contactPhone: req.body.contactPhone,
-          password: req.body.password1,
-          password2: req.body.password2,
+          password: req.body.password,
+          username: req.body.username,
         }),
         req.body.password,
         function (err, user) {
@@ -113,19 +112,41 @@ router.post(
   }
 );
 
+// router.post("/login", passport.authenticate("local", {
+//   successRedirect: "/home",
+//   failureRedirect: "/login",
+
+// }),
+
+// )
+
+// router.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: "/home",
+//     failureRedirect: "/login",
+//   }),
+//   function (req, res) {
+//     res.redirect("/home");
+//   }
+// );
+
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
-      return res.status(400).json({ errors: err });
+      // return res.status(400).json({ errors: err });
+      return next(err); 
+      
     }
     if (!user) {
-      // return res.redirect("/login?info=" + info);
-      return res.status(400).json({ errors: "No user found" });
+      return res.redirect("/login?info=" + info);
+      // return res.status(400).json({ errors: "No user found" });
     }
 
     req.logIn(user, function (err) {
       if (err) {
-        return res.status(400).json({ errors: err });
+        // return res.status(400).json({ errors: err });
+        return next(err); 
       }
       return res.redirect("/home");
     });

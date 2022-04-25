@@ -4,25 +4,25 @@ const registrationSchema = new mongoose.Schema(
   {
     fistname: {
       type: String,
-      required: true,
+      // required: true,
     },
     lastname: {
       type: String,
-      required: true,
+      // required: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     contactPhone: {
       type: String,
     },
-    password1: {
+    password: {
       type: String,
       trim: true,
     },
-    password2: {
+    username: {
       type: String,
       trim: true,
     },

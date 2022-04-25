@@ -9,11 +9,21 @@ const app = express();
 const expressSession = require("express-session");
 const Registration = mongoose.model("Registration");
 const LocalStrategy = require("passport-local").Strategy;
+const rateLimit = require("express-rate-limit");
+const xss = require("xss-clean");
+const helmet = require("helmet");
+const limit = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests",
+});
+
 const bcrypt = require("bcrypt");
 // const bcrypt = require("bcrypt");
-
+app.use(helmet());
+app.use(xss());
 app.use(mongoSanitize());
-
+app.use("/routeName", limit);
 app.use(express.json({ limit: "10kb" }));
 app.use(require("morgan")("combined"));
 app.set("views", path.join(__dirname, "views"));
@@ -38,50 +48,72 @@ app.use("/", router);
 app.use(passport.initialize());
 app.use(passport.session());
 
+passport.use(Registration.createStrategy());
+// passport.use(new LocalStrategy(Registration.authenticate()));
+
+// passport.use(
+//   new LocalStrategy(function (username, password, done) {
+//     User.findOne({ email: username }, function (err, user) {
+//       if (err) {
+//         return done(err);
+//       }
+//       if (!user) {
+//         return done(null, false);
+//       }
+//       if (!user.verifyPassword(password)) {
+//         return done(null, false);
+//       }
+//       return done(null, user);
+//     });
+//   })
+// );
+
+
+// passport.use(
+//   "local",
+//   new LocalStrategy(
+//     { usernameField: "email", passwordField: "password" },
+//     (email, password, done) => {
+//       Registration.findOne({ email: email })
+//         .then((user) => {
+//           if (!user) {
+//             const newUser = new Registration({ email, password });
+
+//             bcrypt.genSalt(10, (err, salt) => {
+//               bcrypt.hash(newUser.password, salt, (err, hash) => {
+//                 if (err) throw err;
+//                 newUser.password = hash;
+//                 newUser
+//                   .save()
+//                   .then()((user) => {
+//                     return done(null, user);
+//                   })
+//                   .catch((err) => {
+//                     return done(null, false, { message: err });
+//                   });
+//               });
+//             });
+//           } else {
+//             bcrypt.compare(password, user.password, (err, isMatch) => {
+//               if (err) throw err;
+
+//               if (isMatch) {
+//                 return done(null, user);
+//               } else {
+//                 return done(null, false, { message: "Wrong Password" });
+//               }
+//             });
+//           }
+//         })
+//         .catch((err) => {
+//           return done(null, false, { message: err });
+//         });
+//     }
+//   )
+// );
+
 passport.serializeUser(Registration.serializeUser());
 
 passport.deserializeUser(Registration.deserializeUser());
-
-passport.use(
-  new LocalStrategy(
-    { usernameField: "email", passwordField: "password" },
-    (email, password, done) => {
-      Registration.findOne({ email: email })
-        .then((user) => {
-          if (!user) {
-            const newUser = new User({ email, password });
-
-            bcrypt.genSalt(10, (err, salt) => {
-              bcrypt.hash(newUser.password, salt, (err, hash) => {
-                if (err) throw err;
-                newUser.password = hash;
-                newUser
-                  .save()
-                  .then()((user) => {
-                    return done(null, user);
-                  })
-                  .catch((err) => {
-                    return done(null, false, { message: err });
-                  });
-              });
-            });
-          } else {
-            bcrypt.compare(password, user.password, (err, isMatch) => {
-              if (err) throw err;
-
-              if (isMatch) {
-                return done(null, user);
-              } else {
-                return done(null, false, { message: "Wrong Password" });
-              }
-            });
-          }
-        })
-        .catch((err) => {
-          return done(null, false, { message: err });
-        });
-    }
-  )
-);
 
 module.exports = app;
