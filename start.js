@@ -1,8 +1,9 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./app");
-var db = require("./models/Registration");
-
+require("./models/Registration");
+require("./app")
+require("./routes/passport")
 
 
 

@@ -35,4 +35,6 @@ const registrationSchema = new mongoose.Schema(
 
 registrationSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("Registration", registrationSchema);
+const Registration = mongoose.model("Registration", registrationSchema);
+
+module.exports = Registration;

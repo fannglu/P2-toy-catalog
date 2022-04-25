@@ -8,7 +8,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const app = express();
 const expressSession = require("express-session");
 const Registration = mongoose.model("Registration");
-const LocalStrategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local");
 const rateLimit = require("express-rate-limit");
 const xss = require("xss-clean");
 const helmet = require("helmet");
@@ -48,25 +48,29 @@ app.use("/", router);
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(Registration.createStrategy());
+passport.serializeUser(Registration.serializeUser());
+
+passport.deserializeUser(Registration.deserializeUser());
+
+// passport.use(Registration.createStrategy());
 // passport.use(new LocalStrategy(Registration.authenticate()));
 
-// passport.use(
-//   new LocalStrategy(function (username, password, done) {
-//     User.findOne({ email: username }, function (err, user) {
-//       if (err) {
-//         return done(err);
-//       }
-//       if (!user) {
-//         return done(null, false);
-//       }
-//       if (!user.verifyPassword(password)) {
-//         return done(null, false);
-//       }
-//       return done(null, user);
-//     });
-//   })
-// );
+passport.use(
+  new LocalStrategy(function (isEmail, password, done) {
+    Registration.findOne({ email: email }, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false);
+      }
+      if (!user.verifyPassword(password)) {
+        return done(null, false);
+      }
+      return done(null, user);
+    });
+  })
+);
 
 
 // passport.use(

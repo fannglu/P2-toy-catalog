@@ -1,5 +1,3 @@
-const path = require("path");
-const auth = require("http-auth");
 const connectEnsureLogin = require("connect-ensure-login");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -41,7 +39,7 @@ router.get(
   }
 );
 
-router.get("/home", connectEnsureLogin.ensureLoggedIn(), function (req, res) {
+router.get("/home", function (req, res) {
   res.render("index");
 });
 router.get("/register", function (req, res) {
@@ -120,37 +118,37 @@ router.post(
 
 // )
 
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/home",
-//     failureRedirect: "/login",
-//   }),
-//   function (req, res) {
-//     res.redirect("/home");
-//   }
-// );
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/home",
+    failureRedirect: "/login",
+  }),
+  function (req, res) {
+    res.redirect("/");
+  }
+);
 
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      // return res.status(400).json({ errors: err });
-      return next(err); 
+// router.post("/login", (req, res, next) => {
+//   passport.authenticate("local", (err, user, info) => {
+//     if (err) {
+//       // return res.status(400).json({ errors: err });
+//       return next(err); 
       
-    }
-    if (!user) {
-      return res.redirect("/login?info=" + info);
-      // return res.status(400).json({ errors: "No user found" });
-    }
+//     }
+//     if (!user) {
+//       return res.redirect("/login?info=" + info);
+//       // return res.status(400).json({ errors: "No user found" });
+//     }
 
-    req.logIn(user, function (err) {
-      if (err) {
-        // return res.status(400).json({ errors: err });
-        return next(err); 
-      }
-      return res.redirect("/home");
-    });
-  })(req, res, next);
-});
+//     req.logIn(user, function (err) {
+//       if (err) {
+//         // return res.status(400).json({ errors: err });
+//         return next(err); 
+//       }
+//       return res.redirect("/home");
+//     });
+//   })(req, res, next);
+// });
 
 module.exports = router;
