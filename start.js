@@ -1,6 +1,14 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./app");
+var db = require("./models/Registration");
+
+
+
+
+
+
+
 
 
 
@@ -22,7 +30,6 @@ mongoose.connection
 
 
 
-require("./models/Registration");
 
 const server = app.listen(8000, function () {
   console.log(`Express is running on port ${server.address().port}`);

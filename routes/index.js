@@ -1,18 +1,16 @@
 const path = require("path");
 const auth = require("http-auth");
-const bcrypt = require("bcrypt");
 const connectEnsureLogin = require("connect-ensure-login");
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-const Registration = mongoose.model("Registration");
-const { check, validationResult } = require("express-validator");
-const passport = require("./passport");
-// const { MongoTopologyClosedError } = require("mongodb");
-// const  passportLocalMongoos = require("passport-local-mongoose");
-// const  LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
 
-// registrationSchema.plugin(passportLocalMongoose);
+const bcrypt = require("bcrypt");
+const Registration = require("../models/Registration");
+
+const { check, validationResult } = require("express-validator");
+
 router.get("/login", connectEnsureLogin.ensureLoggedIn(), function (req, res) {
   res.render("signin");
 });
@@ -41,6 +39,22 @@ router.get(
   }
 );
 
+// router.get(
+//   "/registrants",
+//   basic.check((req, res) => {
+//     Registration.find()
+//       .then((registrations) => {
+//         res.render("registrants", {
+//           title: "Listing registrations",
+//           registrations,
+//         });
+//       })
+//       .catch(() => {
+//         res.send("Sorry! Something went wrong.");
+//       });
+//   })
+// );
+
 router.post(
   "/register",
   [
@@ -68,6 +82,7 @@ router.post(
   async (req, res) => {
     // console.log(req.body);
     const errors = validationResult(req);
+
     if (errors.isEmpty()) {
       Registration.register(
         new Registration({
@@ -97,7 +112,6 @@ router.post(
     }
   }
 );
-
 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {

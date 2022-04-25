@@ -1,8 +1,7 @@
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
-const Registration = mongoose.model("Registration");
+const User = require("../models/Registration")
 
 // passport.serializeUser(
 //   Registration.serializeUser(function (user, done) {
@@ -10,49 +9,45 @@ const Registration = mongoose.model("Registration");
 //   })
 // );
 
-passport.serializeUser(Registration.serializeUser());
 
-passport.deserializeUser(Registration.authenticate());
 
-// Local Startegy
 
-passport.use(
-  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-    Registration.findOne({ email: email })
-      .then((user) => {
-        if (!user) {
-          const newUser = new User({ email, password });
+//   new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+//     Registration.findOne({ email: email })
+//       .then((user) => {
+//         if (!user) {
+//           const newUser = new User({ email, password });
 
-          bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
-              if (err) throw err;
-              newUser.password = hash;
-              newUser
-                .save()
-                .then()((user) => {
-                  return done(null, user);
-                })
-                .catch((err) => {
-                  return done(null, false, { message: err });
-                });
-            });
-          });
-        } else {
-          bcrypt.compare(password, user.password, (err, isMatch) => {
-            if (err) throw err;
+//           bcrypt.genSalt(10, (err, salt) => {
+//             bcrypt.hash(newUser.password, salt, (err, hash) => {
+//               if (err) throw err;
+//               newUser.password = hash;
+//               newUser
+//                 .save()
+//                 .then()((user) => {
+//                   return done(null, user);
+//                 })
+//                 .catch((err) => {
+//                   return done(null, false, { message: err });
+//                 });
+//             });
+//           });
+//         } else {
+//           bcrypt.compare(password, user.password, (err, isMatch) => {
+//             if (err) throw err;
 
-            if (isMatch) {
-              return done(null, user);
-            } else {
-              return done(null, false, { message: "Wrong Password" });
-            }
-          });
-        }
-      })
-      .catch((err) => {
-        return done(null, false, { message: err });
-      });
-  })
-);
+//             if (isMatch) {
+//               return done(null, user);
+//             } else {
+//               return done(null, false, { message: "Wrong Password" });
+//             }
+//           });
+//         }
+//       })
+//       .catch((err) => {
+//         return done(null, false, { message: err });
+//       });
+//   })
+// );
 
-module.exports = passport;
+// module.exports = passport

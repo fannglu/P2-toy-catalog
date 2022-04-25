@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose");
 const registrationSchema = new mongoose.Schema(
   {
     fistname: {
@@ -32,6 +33,6 @@ const registrationSchema = new mongoose.Schema(
   { strict: false }
 );
 
-
+registrationSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("Registration", registrationSchema);
