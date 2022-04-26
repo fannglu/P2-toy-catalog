@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const app = require("./app");
 require("./models/Registration");
 require("./app")
-require("./routes/passport")
+// require("./routes/passport")
 
 
 
