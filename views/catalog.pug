@@ -5,9 +5,12 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Catalog
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js' crossorigin='anonymous')
   link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' rel='stylesheet')
-  link(rel='stylesheet', type='text/css' ,href='/scss/styles.css')
-  link(rel='stylesheet' ,type='text/css' ,href='/scss/product.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.11/vue.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js')
+  link(rel='stylesheet', type='text/css' ,href='/css/styles.css')
+  link(rel='stylesheet' ,type='text/css' ,href='/css/product.css')
 header.row
   nav.navbar.navbar-expand-lg.navbar-dark
     .container-fluid
@@ -29,29 +32,29 @@ header.row
             a.nav-link(href='/login')
               i.fa-solid.fa-user
               |  Log In / Register
-main#products.container-fluid
+main#products
   div
     h1 All Products
     nav.nav(aria-label='Page navigation example')
       ul.pagination
         li.page-item
-          button.page-link(type='button' v-if='page != 1' @click='page--')
+          button.page-link(type='button', v-if='page != 1', @click='page--')
             | Previous
         li.page-item
-          button.page-link(type='button' v-for='pageNumber in pages' @click='page = pageNumber')
+          button.page-link(type='button', v-for='pageNumber in pages', @click='page = pageNumber')
             | {{pageNumber}}
         li.page-item
-          button.page-link(type='button' @click='page++' v-if='page < pages.length')
+          button.page-link(type='button', @click='page++', v-if='page < pages.length')
             | Next
-    .container-fuild.cartItem
-      button.btn.btn-primary(@click='showCart = !showCart' v-show='!verified')
+    .container.cartItem
+      button.btn.btn-primary(@click='showCart = !showCart', v-show='!verified')
         | {{ items.length + (items.length &gt; 1 || items.length === 0 ? &quot; items&quot;
         | : &quot; item&quot;) }}
     .cart(v-show='showCart')
       div(v-show='items.length > 0')
         ul(style='list-style-type: none')
           h5 View Cart
-          li(v-for='item in items' transition='fade')
+          li(v-for='item in items', transition='fade')
             p
               strong {{ item.quantity }}
               |  - {{ item.itemName }}
@@ -76,8 +79,5 @@ main#products.container-fluid
         | Back
     #catalogCard(v-show='!verified')
       h5 Click the on Product to Add to Cart!
-      product-catalog(v-for='item in displayedPosts' :index='index' track-by='$index' :key='item.id' v-bind:catalog-items='item' @click='addToCart(item)')
+      product-catalog(v-for='item in displayedPosts', :index='index', track-by='$index', :key='item.id', v-bind:catalog-items='item', @click='addToCart(item)')
 script(src='./js/catalog.js')
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js' crossorigin='anonymous')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.11/vue.js')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js')

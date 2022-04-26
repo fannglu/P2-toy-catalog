@@ -28,16 +28,12 @@ const { check, validationResult } = require("express-validator");
 router.get("/login", function (req, res) {
   res.render("signin");
 });
-router.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+router.get("/", (req, res) => {
   res.render("signin");
 });
-router.get(
-  "/catalog",
-  connectEnsureLogin.ensureLoggedIn(),
-  function (req, res) {
-    res.render("catalog");
-  }
-);
+router.get("/catalog", function (req, res) {
+  res.render("catalog");
+});
 
 router.get("/home", function (req, res) {
   res.render("index");
@@ -133,8 +129,8 @@ router.post(
 //   passport.authenticate("local", (err, user, info) => {
 //     if (err) {
 //       // return res.status(400).json({ errors: err });
-//       return next(err); 
-      
+//       return next(err);
+
 //     }
 //     if (!user) {
 //       return res.redirect("/login?info=" + info);
@@ -144,7 +140,7 @@ router.post(
 //     req.logIn(user, function (err) {
 //       if (err) {
 //         // return res.status(400).json({ errors: err });
-//         return next(err); 
+//         return next(err);
 //       }
 //       return res.redirect("/home");
 //     });
